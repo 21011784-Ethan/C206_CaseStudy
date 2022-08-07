@@ -80,7 +80,6 @@ class C206_CaseStudyTest {
 		
 	@Test 
 	public void testDeleteItems() {
-	
 	}
 	
 	@Test 
