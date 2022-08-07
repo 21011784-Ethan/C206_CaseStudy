@@ -17,6 +17,9 @@ class C206_CaseStudyTest {
 	private UserAccount ll3;
 	private UserAccount ll4;
 
+	private Category cl1;
+	private Category cl2;
+
 ////	bidlist
 //	private Bid bl1;
 
@@ -32,6 +35,7 @@ class C206_CaseStudyTest {
 	ArrayList<UserAccount> loginList = new ArrayList<UserAccount>();
 	ArrayList<Bid> bidList = new ArrayList<Bid>();
 	ArrayList<Item> itemList = new ArrayList<Item>();
+	ArrayList<Category> categoryList = new ArrayList<Category>();
 
 	public C206_CaseStudytest() {
 		super();
@@ -62,9 +66,13 @@ class C206_CaseStudyTest {
 		itemList.add(il6);
 		itemList.add(il7);
 
+		cl1 = new Category("Light");
+		cl2 = new Category("Toy");
+
 		loginList = new ArrayList<UserAccount>();
 		bidList = new ArrayList<Bid>();
 		itemList = new ArrayList<Item>();
+		categoryList = new ArrayList<Category>();
 
 	}
 
@@ -144,15 +152,48 @@ class C206_CaseStudyTest {
 
 	@Test
 	public void testAddCategory() {
+		// Test if category list is not null but empty - boundary
+		assertNotNull(categoryList);
 
+		// Test that list is empty
+		categoryList.add(cl1);
+		assertEquals(1, categoryList.size());
+		assertSame(cl1, categoryList.get(0));
+
+		// Test add second category
+		categoryList.add(cl2);
+		assertEquals(2, categoryList.size());
+		assertSame(cl2, categoryList.get(1));
 	}
 
 	@Test
 	public void testViewAllCategory() {
+		// Test if category list is not null but empty - boundary
+		assertNotNull(categoryList);
+
+		// test if the category of items retrieved from the SourceCentre is empty -
+		// boundary
+		String allItems = C206_CaseStudy.manageCategory(itemList);
+		String testOutput = "";
+		assertEquals("Check that ViewAllCategory", testOutput, allCategories);
+
+		// Given an empty list, after adding 7 items, test if the size of the list is 7
+		// - normal
+		categoryList.add(cl1);
+		categoryList.add(cl2);
+		assertEquals("Test that Category arraylist size is 2", 2, categoryList.size());
 	}
 
 	@Test
 	public void testDeleteCategory() {
+		// Test if Category list is not null but empty - boundary
+		assertNotNull(categoryList);
+
+		// Test categoryList size
+		assertEquals(2, categoryList.size());
+
+		// Test category delete
+		categoryList.remove(cl1);
 
 	}
 
@@ -184,9 +225,13 @@ class C206_CaseStudyTest {
 		il5 = null;
 		il6 = null;
 		il7 = null;
+		
+		cl1 = null;
+		cl2 = null;
 
 		loginList = null;
 		bidList = null;
 		itemList = null;
+		categoryList = null;
 	}
 }
