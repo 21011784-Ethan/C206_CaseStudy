@@ -68,60 +68,107 @@ class C206_CaseStudyTest {
 
 	}
 
-	
-	@Test 
-	public void testViewAllItems() {
-		
+	@Test
+	public void testviewAllItems() {
+		// Test if Item list is not null but empty -boundary
+		assertNotNull("Test if there is valid Item arraylist to retrieve item", itemList);
+
+		// test if the list of items retrieved from the SourceCentre is empty - boundary
+		String allItems = C206_CaseStudy.viewAllItems(itemList);
+		String testOutput = "";
+		assertEquals("Check that viewAllItems", testOutput, allItems);
+
+		// Given an empty list, after adding 7 items, test if the size of the list is 7
+		// - normal
+		itemList.add(il1);
+		itemList.add(il2);
+		itemList.add(il3);
+		itemList.add(il4);
+		itemList.add(il5);
+		itemList.add(il6);
+		itemList.add(il7);
+		assertEquals("Test that Item arraylist size is 7", 7, itemList.size());
+
+		// test if the expected output string same as the list of items retrieved
+		allItems = C206_CaseStudy.viewAllItems(itemList);
+		for (Item i : itemList) {
+			testOutput += ("\nItem Name: " + Item.getItemName() + "\nDescription: " + Item.getDescription()
+					+ "\nCategory: " + Item.getCategory() + "\nMinimum Bid Price: $" + Item.getMinimumBidPrice()
+					+ "\nBid Increment: $" + Item.getBidIncrement() + "\nAuction Start Date: " + Item.getAuctionStart()
+					+ "\n");
+		}
+		assertEquals("Test that viewAllItems", testOutput, allItems);
 	}
-		
-	@Test 
+
+	@Test
 	public void testAddItems() {
+		// Test if Item list is not null but empty - boundary
+		assertNotNull(itemList);
+
+		// Test that list is empty
+		itemList.add(il1);
+		assertEquals(1, itemList.size());
+		assertSame(il1, itemList.get(0));
+
+		// Test add second item
+		itemList.add(il2);
+		assertEquals(2, itemList.size());
+		assertSame(il2, itemList.get(1));
+
 	}
-		
-	@Test 
+
+	@Test
 	public void testDeleteItems() {
+		// Test if Item list is not null but empty - boundary
+		assertNotNull(itemList);
+
+		// Test itemList size
+		assertEquals(7, itemList.size());
+
+		// Test item delete
+		itemList.remove(il1);
+
 	}
-	
-	@Test 
+
+	@Test
 	public void testViewAllUsers() {
 	}
-	
-	@Test 
+
+	@Test
 	public void testRegister() {
 	}
-	
-	@Test 
+
+	@Test
 	public void testDeleteAccount() {
 	}
-		
-	@Test 
+
+	@Test
 	public void testAddCategory() {
-		
+
 	}
-		
-	@Test 
+
+	@Test
 	public void testViewAllCategory() {
 	}
-	
-	@Test 
+
+	@Test
 	public void testDeleteCategory() {
-		
+
 	}
-	
-	@Test 
+
+	@Test
 	public void testViewAllBids() {
-		
+
 	}
-		
-	@Test 
+
+	@Test
 	public void testAddBid() {
-			
-		}
-			
-	@Test 
+
+	}
+
+	@Test
 	public void testDeleteBid() {
 	}
-				
 
 	@After
 	public void tearDown() throws Exception {
