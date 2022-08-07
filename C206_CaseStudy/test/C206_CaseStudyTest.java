@@ -1,3 +1,4 @@
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
@@ -265,15 +266,19 @@ class C206_CaseStudyTest {
 		categoryList.remove(cl1);
 
 	}
+	boolean bidChecker = false;
 
 	@Test
 	public void testViewAllBids() {
-
+		boolean allBids = C206_CaseStudy.viewAllBids(bidList);
+		String testOutput = "";
+		assertTrue("check if successfully printed out bids", allBids);
 	}
 
 	@Test
 	public void testAddBid() {
-
+		C206_CaseStudy.bidItem(itemList, currentUser);
+		AssertTrue("Check if item successfully bid", bidChecker);
 	}
 
 	@Test
@@ -303,4 +308,6 @@ class C206_CaseStudyTest {
 		itemList = null;
 		categoryList = null;
 	}
+	
+
 }

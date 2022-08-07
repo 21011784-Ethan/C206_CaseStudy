@@ -482,23 +482,6 @@ public class C206_CaseStudy {
 		}
 	}
 
-	public static boolean changePassword(ArrayList<UserAccount> loginList, String email, String password) {
-		boolean changed = false;
-		String newPassword = "";
-		password = Helper.readString("Please input your current password: ");
-
-		for (int i = 0; i < loginList.size(); i++) {
-
-			if (loginList.get(i).getEmail().equals(email) && loginList.get(i).getPassword().equals(password)) {
-				newPassword = Helper.readString("Please input your NEW Password: ");
-				loginList.get(i).setPassword(newPassword);
-				changed = true;
-			}
-		}
-
-		return changed;
-
-	}
 
 	public static boolean changePassword(ArrayList<UserAccount> loginList, String email, String password) {
 		boolean changed = false;
@@ -622,6 +605,43 @@ public class C206_CaseStudy {
 		}
 
 	}
+	
+	public static boolean viewAllBids(ArrayList<Bid> bidList) {
+		boolean view = false;
+		
+		for (Bid b : bidList) {
+			System.out.println("Item Name: " + b.getItemName() + "\nDescription: " + b.getDescription()
+			+ "\nCategory: " + b.getCategory() + "\nMinimum Bid Price: $" + b.getMinimumBidPrice()
+			+ "\nBid Increment: $" + b.getBidIncrement() + "\nAuction Start Date: "
+			+ b.getAuctionStart());
+	System.out.println();
+	
+		view = true;
+		}
+		
+		
+		return view;
+	}
+	
+	public static boolean deleteBid(ArrayList<Bid> bidList) {
+		boolean deleted = true;
+		
+		int bidId = Helper.readInt("Type bid id: ");
+		
+		for (Bid b : bidList) {
+			if (bidId == b.getBidId()) {
+				bidList.remove(b);
+			} else {
+				deleted = false;
+			}
+		}
+		
+		if (deleted == false) {
+			System.out.println("Bid id not deleted / not existing.");
+		}
+				
+		return deleted;
+	}
 
 	public static void menu() {
 		Helper.line(70, "=");
@@ -672,6 +692,11 @@ public class C206_CaseStudy {
 			System.out.println(i.getItemName());
 		}
 		Helper.line(70, "-");
+	}
+
+	public static boolean testDeleteBid() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }
