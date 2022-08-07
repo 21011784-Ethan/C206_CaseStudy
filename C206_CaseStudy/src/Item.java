@@ -1,6 +1,7 @@
 import java.time.LocalDate;
 
-public class Item {
+public class Item{
+
 	private String itemName;
 	private String description;
 	private double minimumBidPrice;
@@ -9,32 +10,21 @@ public class Item {
 	private double bidIncrement;
 	private String category;
 	private int itemId;
-
-	public Item(String itemName, LocalDate auctionStart, LocalDate endDate,double bidIncrement, String category, int itemId) {
-
-	public Item(String itemName, String description, double minimumBidPrice, LocalDate auctionStart, LocalDate endDate,
+	
+	public Item(String itemName,  String description, double minimumBidPrice,  LocalDate auctionStart, LocalDate endDate,
 			double bidIncrement2, String category, int itemId) {
 		this.itemName = itemName;
-		this.description = "";
-		this.minimumBidPrice = 1.0;
 		this.description = description;
 		this.minimumBidPrice = minimumBidPrice;
 		this.auctionStart = auctionStart;
 		this.endDate = endDate;
-		this.bidIncrement = bidIncrement;
 		this.bidIncrement = bidIncrement2;
 		this.category = category;
 		this.itemId = itemId;
 	}
-
-	public Item(String itemName, String description, double minimumBidPrice, LocalDate auctionStart, LocalDate endDate,
-   int bidIncrement, String category, int itemId) {
-
-	public Item(String itemName, LocalDate auctionStart, LocalDate endDate, double bidIncrement, String category,
-			int itemId) {
+	
+	public Item(String itemName, LocalDate auctionStart, LocalDate endDate,double bidIncrement, String category, int itemId) {
 		this.itemName = itemName;
-		this.description = description;
-		this.minimumBidPrice = minimumBidPrice;
 		this.description = "";
 		this.minimumBidPrice = 1.0;
 		this.auctionStart = auctionStart;
@@ -43,6 +33,8 @@ public class Item {
 		this.category = category;
 		this.itemId = itemId;
 	}
+	
+
 
 	public String getItemName() {
 		return itemName;
@@ -107,5 +99,5 @@ public class Item {
 	public void setItemId(int itemId) {
 		this.itemId = itemId;
 	}
-
+	
 }

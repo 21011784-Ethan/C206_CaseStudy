@@ -1,54 +1,53 @@
 import java.time.LocalDate;
-	
-	public class Bid extends Item {
-		private int bidId;
-		private String sellerEmail;
-		private String buyerEmail;
-		private double bidPrice;
 
-		public Bid(String itemName, LocalDate auctionStart, LocalDate endDate, String category, int bidId,
-				String sellerEmail, String buyerEmail, double bidPrice) {
-			super(itemName, auctionStart, endDate, category);
-		}
-		
-		public Bid(String itemName, LocalDate auctionStart, LocalDate endDate, double bidIncrement, String category,
-				int bidId, String sellerEmail, String buyerEmail, double bidPrice, int itemId) {
-			super(itemName, auctionStart, endDate, bidIncrement, category, itemId);
-			this.bidId = bidId;
-			this.sellerEmail = sellerEmail;
-			this.buyerEmail = buyerEmail;
-			this.bidPrice = bidPrice;
-		}
+public class Bid extends Item {
 
-		public int getBidId() {
-			return bidId;
-		}
+	private int bidId;
+	private String sellerEmail;
+	private String buyerEmail;
+	private double bidPrice;
 
-		public void setBidId(int bidId) {
-			this.bidId = bidId;
-		}
+	public Bid(String itemName, LocalDate auctionStart, LocalDate endDate, double bidIncrement,String category, int bidId,
+			String sellerEmail, String buyerEmail, double bidPrice, int itemId) {
+		super(itemName, auctionStart, endDate, bidIncrement ,category,itemId);
+		this.bidId = bidId;
+		this.sellerEmail = sellerEmail;
+		this.buyerEmail = buyerEmail;
+		this.bidPrice = bidPrice;
+	}
 
-		public String getSellerEmail() {
-			return sellerEmail;
-		}
+	public int getBidId() {
+		return bidId;
+	}
 
-		public void setSellerEmail(String sellerEmail) {
-			this.sellerEmail = sellerEmail;
-		}
+	public void setBidId(int bidId) {
+		this.bidId = bidId;
+	}
 
-		public String getBuyerEmail() {
-			return buyerEmail;
-		}
+	public String getSellerEmail() {
+		return sellerEmail;
+	}
 
-		public void setBuyerEmail(String buyerEmail) {
-			this.buyerEmail = buyerEmail;
-		}
+	public void setSellerEmail(String sellerEmail) {
 
-		public double getBidPrice() {
-			return bidPrice;
-		}
+		this.sellerEmail = sellerEmail;
+	}
 
-		public void setBidPrice(double bidPrice) {
-			this.bidPrice = bidPrice;
-		}
+	public String getBuyerEmail() {
+		return buyerEmail;
+	}
+
+	public void setBuyerEmail(String buyerEmail) {
+		this.buyerEmail = buyerEmail;
+	}
+
+	public double getBidPrice() {
+		return bidPrice;
+	}
+
+	public void setBidPrice(double bidPrice) {
+		this.bidPrice = bidPrice;
+	}
+
+
 }
