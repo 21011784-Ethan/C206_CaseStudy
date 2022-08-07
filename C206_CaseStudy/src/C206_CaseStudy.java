@@ -216,8 +216,8 @@ public class C206_CaseStudy {
 		}
 		
 		public static void manageItems(ArrayList<Item> itemList) {
-			
 		}
+		
 		}
 		
 		public static boolean manageCategory(ArrayList<Item> itemList) {
