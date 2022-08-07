@@ -278,11 +278,13 @@ class C206_CaseStudyTest {
 	@Test
 	public void testAddBid() {
 		C206_CaseStudy.bidItem(itemList, currentUser);
-		AssertTrue("Check if item successfully bid", bidChecker);
+		assertTrue("Check if item successfully bid", bidChecker);
 	}
 
 	@Test
 	public void testDeleteBid() {
+		boolean deleted = C206_CaseStudy.testDeleteBid();
+		assertTrue("Check if bid deleted", deleted);
 	}
 
 	@After
