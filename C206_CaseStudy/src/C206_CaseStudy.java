@@ -120,8 +120,143 @@ public class C206_CaseStudy {
 		}
 		
 		public static void adminControls(ArrayList<UserAccount> loginList) {
-		
+
+			System.out.println("Campus Online Auction Shop (COAS)");
+			System.out.println("[YOU ARE AN ADMINISTRATOR]");
+			Helper.line(70, "-");
+			System.out.println("1. Manage Items");
+			System.out.println("2. Manage Categories");
+			System.out.println("3. Manage Bids");
+			System.out.println("4. Manage Users Status");
+			System.out.println("5. Logout");
+			
+		public static void adminControls(ArrayList<UserAccount> loginList, String email, String password) {
+
+			int adminOption = 0;
+			while (adminOption != 5) {
+				adminOption = Helper.readInt("Type an option: ");
+
+				if (adminOption == 1) {
+					//Manage Items
+
+
+					manageItems(itemList);
+					adminMenu();
+				} else if (adminOption == 2) {
+					//Manage Categories
+					manageCategory(itemList);
+					adminMenu();
+				} else if (adminOption == 3) {
+					//Manage Bids
+
+
+					adminMenu();
+				} else if (adminOption == 4) {
+					// Manage User Status
+					boolean found = false;
+					String email = Helper.readString("Type email you want to manage: ");
+					int status = 0;
+					for (int i = 0; i < loginList.size(); i++) {
+						if (loginList.get(i).getEmail().equals(email) && !loginList.get(i).getRole().equals("admin")) {
+							found = true;
+							System.out.println("1. Valid");
+							System.out.println("2. Blocked");
+							status = Helper.readInt("Select status for this user: ");
+
+							if (status == 1) {
+								loginList.get(i).setStatus("valid");
+								System.out.println("Changed to valid user");
+							} else if (status == 2) {
+								loginList.get(i).setStatus("blocked");
+								System.out.println("Changed to blocked user");
+							} else {
+								System.out.println("Invalid Status selection");
+							}
+					int choice = 0;
+					System.out.println("1. Delete users");
+					System.out.println("2. Change user Status (BLOCK USERS)");
+					System.out.println("3. View all Users");
+					choice = Helper.readInt("Please input your choice of action: ");
+
+					if (choice == 1) {				
+
+							adminDeleteStatus = true;
+							adminOption = 5;
+
+					} else if (choice == 2) {
+						changeUserStatus();
+					}else if (choice == 3) {
+						for (UserAccount us : loginList) {
+							System.out.println();
+							System.out.println("Name: " + us.getName());
+							System.out.println("Email: " + us.getEmail());
+						}
+					} else {
+						System.out.println("Invalid choice.");
+					}
+					if (found == false) {
+						System.out.println("Email not found / Not allowed to be changed");
+					}
+					adminMenu();
+				}
+			}
+			logoutStatus = true;
+			System.out.println("Successfully Logged out!");
+
+			if (adminDeleteStatus == false) {
+				System.out.println("Successfully Logged out!");
+			}
 		}
+		public static boolean adminDeleteUser(ArrayList<UserAccount> loginList) {
+			
+		}
+				
+		public static void changeUserStatus() {
+			
+		}
+		
+		public static void manageItems(ArrayList<Item> itemList) {
+			
+	
+		}
+		
+		public static boolean manageCategory(ArrayList<Item> itemList) {
+			boolean categoryFound = false;
+			String category = "";
+			int option = 0;
+			System.out.println("1. Delete an Item");
+			System.out.println("2. View All categories");
+			option = Helper.readInt("Type the option you want to select: ");
+
+			if (option == 1) {
+				category = Helper.readString("Type item Category you want to Delete: ");
+				for (int i = 0; i < itemList.size(); i++) {
+					if (itemList.get(i).getCategory().equalsIgnoreCase(category)) {
+						categoryFound = true;
+
+					}
+
+					if (categoryFound == true) {
+						System.out.println("Category: " + itemList.get(i).getCategory() + " has been removed.");
+						itemList.remove(i);
+					}
+				}
+
+			} else if (option == 2) {
+				categoryFound = true;
+				for (int i = 0; i < itemList.size(); i++) {
+					System.out.println(itemList.get(i).getCategory());
+				}
+			} else {
+				System.out.println("Invalid Option");
+			}
+
+			if (categoryFound == false) {
+				System.out.println("Category is not found.");
+			}
+			return categoryFound;
+		}
+		
 		
 		public static void deleteUser(ArrayList<UserAccount> currentUser, ArrayList<UserAccount> loginList) {
 		}
@@ -134,6 +269,29 @@ public class C206_CaseStudy {
 		
 		public static void searchCategory(ArrayList<Item> itemList) {
 			// Search biding items by category
+			
+			String category = Helper.readString("Search category: ");
+			
+			Helper.line(70, "-");
+			System.out.println("ALL ITEMS");
+			System.out.println("SEARCHING FOR CATEGORY: " + category);
+			Helper.line(70, "-");
+			category.toLowerCase();
+			System.out.println();
+			for (int i = 0; i < itemList.size(); i++) {
+				Item item = itemList.get(i);
+				String[] categoryArray = item.getCategory().split(" ");
+				// System.out.println(Arrays.toString(categoryArray));
+				for (int j = 0; j < categoryArray.length; j++) {
+					if (category.strip().equalsIgnoreCase(categoryArray[j].strip()) || category.equalsIgnoreCase(item.getCategory())) {
+						System.out.println("Item Name: " + item.getItemName() + "\nDescription: " + item.getDescription()
+								+ "\nCategory: " + item.getCategory() + "\nMinimum Bid Price: $" + item.getMinimumBidPrice()
+								+ "\nBid Increment: $" + item.getBidIncrement() + "\nAuction Start Date: "
+								+ item.getAuctionStart());
+						System.out.println();
+					}
+				}
+			}
 		}
 		
 		public static void searchItem(ArrayList<Item> itemList) {
